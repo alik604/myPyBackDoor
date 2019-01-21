@@ -32,7 +32,7 @@ one could use my python keylogger to extent this app
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Comming soon 
-capture video with web cam, and send (via FTP?) parts the contain a human face (via openCV) 
+capture video with web cam, and send (via FTP?). record IFF a human face is in view of camera (via openCV) 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
