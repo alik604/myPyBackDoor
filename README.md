@@ -40,5 +40,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ```diff
-+ /** I case you are wondering why I declinded the offer, I would have been programming "10-20% of the time".... they refused to tell me what I would be doing the rest of the time. */ 
++ I case you are wondering why I declinded the offer, I would have been a 'software developer' who programs only "10-20% of the time"👀... they refused to tell me what I would be doing the rest of the time. 
 ```
