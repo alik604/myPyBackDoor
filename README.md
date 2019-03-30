@@ -41,7 +41,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 * search for a file call "wallet.dat"💯😈💹 // %100 evil makes money 
 
-  
+* turn this into a proper [rat](https://en.wikipedia.org/wiki/Remote_access_trojan)
+  + Bypass antivirus 
+  + Sample [1](https://github.com/nathanlopez/Stitch)
+  + Sample [2](https://github.com/n1nj4sec/pupy)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
