@@ -25,8 +25,7 @@ press X and follow on screen instructions to do Y
   - 9: "Shut it down" -MC Hammer 
   - 10: Get wifi Password list 
 
-+ one could use my python keylogger to extent this app 
-+ ... or my DOS client 
+
 
  ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -45,6 +44,12 @@ Pull requests are welcome. For major changes, please open an issue first to disc
   + Bypass antivirus 
   + Sample [1](https://github.com/nathanlopez/Stitch)
   + Sample [2](https://github.com/n1nj4sec/pupy)
+
+
++ add in my Python Keylogger
++ add in my DoS client 
+  - make more effective. 
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
