@@ -33,6 +33,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## Comming soon 
 * Capture video with web cam, and send (via FTP?). record IFF a human face is in view of camera (via OpenCV), this part is partially done. see my openCV projects DIR. 
 
+* record mic, and conveter to text and transmit 
+
 * Hijack chrome passwords (pretty easy to do)
 
   * [Tutorial 1](<https://github.com/ProgrammedBoi/password-stealer/blob/master/stealer.pyw>)
@@ -49,6 +51,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 + add in my Python Keylogger
 + add in my DoS client 
   - make more effective. 
+
+
 
 
 ## License
