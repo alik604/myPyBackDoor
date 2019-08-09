@@ -4,8 +4,8 @@ import socket
 
 s = socket.socket()
 port = 8080
-host = input(str("enter server addr: "))
-
+#host = input(str("enter server addr: "))
+host ="BlueEyesPC"
 s.connect((host, port))
 
 print("connected* ")
