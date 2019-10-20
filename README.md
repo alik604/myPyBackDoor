@@ -31,6 +31,9 @@ press X and follow on screen instructions to do Y
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Comming soon 
+
+I doubt think ill get around to any of these... I am too busy with learning security and ML  
+
 * Capture video with web cam, and send (via FTP?). record IFF a human face is in view of camera (via OpenCV), this part is partially done. see my openCV projects DIR. 
 
 * record mic, and conveter to text and transmit 
@@ -39,7 +42,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
   * [Tutorial 1](<https://github.com/ProgrammedBoi/password-stealer/blob/master/stealer.pyw>)
   * [Tutorial 2](<https://github.com/ProgrammedBoi/password-proof-of-concept/blob/master/pass_stealer.py>)
-
+*  [Tutorial 3](https://raw.githubusercontent.com/byt3bl33d3r/chrome-decrypter/master/chrome_decrypt.py)
 * search for a file call "wallet.dat"💯😈💹 // %100 evil makes money 
 
 * turn this into a proper [rat](https://en.wikipedia.org/wiki/Remote_access_trojan)
@@ -51,10 +54,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 + add in my Python Keylogger
 + add in my DoS client 
   - make more effective. 
-
-## acknolegments 
-+ [this dude](https://raw.githubusercontent.com/byt3bl33d3r/chrome-decrypter/master/chrome_decrypt.py)
-+ everythings connected to the interwebz.... citing is a waste of time... the above to really just a note for myself :) 
 
 
 
