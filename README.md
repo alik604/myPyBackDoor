@@ -30,6 +30,12 @@ press X and follow on screen instructions to do Y
  ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+
+## Inspiration 
++ Mr. robot
++ https://github.com/quasar/QuasarRAT
++ https://github.com/nathanlopez/Stitch
+
 ## Comming soon 
 
 I doubt think ill get around to any of these... I am too busy with learning security and ML  
