@@ -54,7 +54,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## acknolegments 
 + [this dude](https://raw.githubusercontent.com/byt3bl33d3r/chrome-decrypter/master/chrome_decrypt.py)
-+ everythings connected to the interwebz.... citing is a wate of time... the above to really just a note for myself :) 
++ everythings connected to the interwebz.... citing is a waste of time... the above to really just a note for myself :) 
 
 
 
