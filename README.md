@@ -38,13 +38,13 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Comming soon 
 
-I doubt think ill get around to any of these... I am too busy with learning security and ML  
+I doubt ill get around to any of these... I am too busy with learning _ML for Security_   
 
 * Capture video with web cam, and send (via FTP?). record IFF a human face is in view of camera (via OpenCV), this part is partially done. see my openCV projects DIR. 
 
 * record mic, and conveter to text and transmit 
 
-* Hijack chrome passwords (pretty easy to do)
+* [Hijack chrome passwords (pretty easy to do). This compontent is done here, but is easy to integrate in](https://github.com/alik604/chromePasswordThieve)
 
   * [Tutorial 1](<https://github.com/ProgrammedBoi/password-stealer/blob/master/stealer.pyw>)
   * [Tutorial 2](<https://github.com/ProgrammedBoi/password-proof-of-concept/blob/master/pass_stealer.py>)
