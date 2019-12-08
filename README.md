@@ -9,7 +9,7 @@ python server.py
 python slave.py 
 
 ```
-will only work on same computer (intentionally) 
+Tested on the same computer, will need your PC hostname and/or IP addr  
 
 
 ## Usage
@@ -36,9 +36,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 + https://github.com/quasar/QuasarRAT
 + https://github.com/nathanlopez/Stitch
 
-## Comming soon 
+## Expansion  
 
-I doubt ill get around to any of these... I am too busy with learning _ML for Security_   
+I wont get around to any of these... I am too busy with learning _ML for Security_. The first two suggestion will likely be their own mini-project, which I won't get around to integrating into myPay BackDoor    
 
 * Capture video with web cam, and send (via FTP?). record IFF a human face is in view of camera (via OpenCV), this part is partially done. see my openCV projects DIR. 
 
