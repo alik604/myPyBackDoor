@@ -24,7 +24,7 @@ press X and follow on screen instructions to do Y
   - 9: "Shut it down" -MC Hammer 
   - 10: Get Wifi password list
   - 11: Get Chrome passwords
-  - 12: Waste bandwidth 
+  - 12: Spam download URL 
 
 ## Expansion  
 
@@ -48,7 +48,7 @@ Potential expansions. This is my more stared repo, so despite losing interest in
 + [Hijack chrome passwords (pretty easy to do). This compontent is done here, but is easy to integrate in](https://github.com/alik604/chromePasswordThieve)
   - [Tutorial 1](<https://github.com/ProgrammedBoi/password-stealer/blob/master/stealer.pyw>)
   - [Tutorial 2](<https://github.com/ProgrammedBoi/password-proof-of-concept/blob/master/pass_stealer.py>)
-  - [Tutorial 3](https://raw.githubusercontent.com/byt3bl33d3r/chrome-decrypter/master/chrome_decrypt.py)
+  - [Tutorial 3](<https://raw.githubusercontent.com/byt3bl33d3r/chrome-decrypter/master/chrome_decrypt.py>)
 
 ## Contributing
 
