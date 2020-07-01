@@ -5,14 +5,13 @@ s = socket.socket()
 host = socket.gethostname()
 port = 8080
 s.bind((host, port))
-print()
-print("Server is currently running @", host)
+print("\nServer is currently running @", host)
 print("Waiting for incoming connections")
 s.listen(1)
 
 conn, addr = s.accept()
-print(addr, "Has connected")
-print()
+print(addr, "Has connected\n")
+
 
 while True:
 
@@ -86,7 +85,7 @@ while True:
     elif command == "7":
         # Get ipconfig
         conn.send(command.encode())
-        result = conn.recv().decode()  # TODO .recv withing pram, as per the docs, its unlimited be defualt
+        result = conn.recv().decode()
         print(result)
 
     elif command == "8":

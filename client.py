@@ -5,9 +5,8 @@ from multiprocessing.dummy import Pool as ThreadPool
 from urllib.request import urlopen
 
 s = socket.socket()
+host = os.environ['COMPUTERNAME']  # author's PC is: "BlueEyesPC"; alt:  input(str("enter server addr: "))
 port = 8080
-# host = input(str("enter server addr: "))
-host = "BlueEyesPC"  # TODO
 s.connect((host, port))
 
 print("connected* ")
